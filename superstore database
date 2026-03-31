@@ -30,7 +30,7 @@ VALUES
 #For this project, I used SQL to query the Superstore database to get information about items sold at the store and their prices. 
 
 #Use a SELECT statement to order the items by price.
-    SELECT item_name, price 
+SELECT item_name, price 
 FROM superstore
 ORDER BY price desc
 ;
