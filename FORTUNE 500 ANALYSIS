@@ -1,1 +1,40 @@
+--Query #1
+--What companies offer healthcare benefits and a 12 week minimum maternity leave policy?
+SELECT company_name, maternity_leave_weeks
+FROM fortune_companies
+WHERE healthcare_benefits = 1
+AND maternity_leave_weeks >= 12
+ORDER BY maternity_leave_weeks DESC
+;
+
+--Query #2
+--What is the total number of paid time off days companies pay if all employees take all of their paid time off?
+SELECT *
+,employees * paid_time_off_days AS total_paid_time_off
+FROM fortune_companies
+ORDER BY total_paid_time_off DESC
+;
+
+--Query #3
+--How do fortune 500 companies compare to one another in terms of average employee length of stay?
+SELECT *
+,avg_employee_tenure * 365 AS avg_employee_tenure_days 
+,CASE
+WHEN avg_employee_tenure * 365 > 2117 THEN 'above average'
+WHEN avg_employee_tenure * 365 = 2117 THEN 'average'
+ELSE 'below average'
+END AS avg_tenure_status
+FROM fortune_companies
+ORDER BY avg_employee_tenure_days DESC
+;
+
+--Query #4
+--Which industries have companies with an average employee tenure of at least 5 years and offer healthcare benefits
+SELECT industry, COUNT(company_name) AS number_of_companies
+FROM fortune_companies
+GROUP BY industry
+HAVING AVG(avg_employee_tenure)>=5
+AND MIN(healthcare_benefits)=1
+ORDER BY number_of_companies DESC
+;
 
