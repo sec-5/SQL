@@ -90,7 +90,7 @@ ORDER BY avg_employee_tenure_days DESC
 ;
 
 --Query #4
---Which industries have companies with an average employee tenure of at least 5 years and offer healthcare benefits
+--Which industries have companies, and how many, with an average employee tenure of at least 5 years and offer healthcare benefits
 SELECT industry, COUNT(company_name) AS number_of_companies
 FROM fortune_companies
 GROUP BY industry
