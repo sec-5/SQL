@@ -46,8 +46,8 @@ FROM superstore
 WHERE category = 'Kitchen Supplies'
 ;
 
-#Show what items have the highest average rating
-SELECT * 
+#Show the most expensive item in the "Furnishings" category?
+SELECT MAX(PRICE), item_name, category
 FROM superstore
-ORDER BY average_rating desc
+WHERE category='Furnishings'
 ;
